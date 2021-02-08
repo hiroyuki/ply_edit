@@ -42,7 +42,8 @@ class ofApp : public ofBaseApp{
 		void exportPLY()
 		{
 		//	editor.save(ofGetTimestampString()+".ply", hue, saturation, brightness);
-			editor.save("out.ply", hue, saturation, brightness);
+			string filename = "hue_"+ofToString(float(hue)) + ".satu_" + ofToString(float(saturation)) + ".bri_" + ofToString(float(brightness)) + ".ply";
+			editor.save(filename, hue, saturation, brightness);
 		}
 
 };
