@@ -1,0 +1,8 @@
+
+bin/data/.gitkeep
+*.dll
+*.exe
+*.exp
+*.lib
+*.ilk
+*.pdb
