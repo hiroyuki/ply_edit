@@ -6,3 +6,10 @@ bin/data/.gitkeep
 *.lib
 *.ilk
 *.pdb
+.vs/
+obj/
+ply_edit.vcxproj.user
+ply_edit.vcxproj.filters
+ply_edit.vcxproj
+ply_edit.sln
+icon.rc

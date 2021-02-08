@@ -2,8 +2,8 @@
 
 #include "ofMain.h"
 #include "tinyply.h"
-#include "example-utils.hpp"
-using namespace tinyply;
+#include "plyEditor.h"
+
 
 class ofApp : public ofBaseApp{
 
@@ -23,4 +23,6 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+		plyEditor editor;
+		ofEasyCam camera;
 };
