@@ -3,6 +3,8 @@
 #include "ofMain.h"
 #include "tinyply.h"
 #include "plyEditor.h"
+#include "ofxAutoReloadedShader.h"
+#include "ofxGui.h"
 
 
 class ofApp : public ofBaseApp{
@@ -25,4 +27,22 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 		plyEditor editor;
 		ofEasyCam camera;
+		ofxAutoReloadedShader shader;
+		ofxPanel gui;
+		ofxFloatSlider hue, saturation, brightness, scale;
+		ofxButton loadBtn;
+		ofxButton writeBtn;
+
+		void loadPLY()
+		{
+			ofFileDialogResult r = ofSystemLoadDialog("open PLY");
+			ofLog() << r.getPath();
+		}
+
+		void exportPLY()
+		{
+		//	editor.save(ofGetTimestampString()+".ply", hue, saturation, brightness);
+			editor.save("out.ply", hue, saturation, brightness);
+		}
+
 };
