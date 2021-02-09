@@ -3,22 +3,10 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 
-	editor.loadPLY(ofToDataPath("Ship0.018_Surround0.018-0.07.ply"));
+	ship.setup("Ship", ofToDataPath("Ship.ply"), 20, 20);
+	surround.setup("Surround", ofToDataPath("Surround.ply"), 20, 150);
 //	editor.loadPLY(ofToDataPath("out.ply"));
-	shader.load("shader/shader");
 	ofSetColor(255);
-	
-	loadBtn.addListener(this, &ofApp::loadPLY);
-	writeBtn.addListener(this, &ofApp::exportPLY);
-	gui.setup();
-	gui.add(scale.setup("scale", 50, 20, 80));
-
-	gui.add(hue.setup("hue", 1, 0, 3));
-	gui.add(saturation.setup("satulation", 1, 0, 3));
-	gui.add(brightness.setup("brightness", 1, 0, 3));
-	gui.add(loadBtn.setup("load"));
-	gui.add(writeBtn.setup("save"));
-
 	ofSetWindowShape(1920, 1080);
 
 }
@@ -33,16 +21,12 @@ void ofApp::draw(){
 	ofBackground(ofColor::black);
 	ofPushStyle();
 	camera.begin();
-	shader.begin();
-	shader.setUniformMatrix4f("mvp", camera.getModelViewProjectionMatrix());
-	shader.setUniform3f("hsv", hue, saturation, brightness);
-	shader.setUniform1f("scale", scale);
-	editor.debugDraw();
-	shader.end();
+	ship.debugDraw(camera.getModelViewProjectionMatrix());
+	surround.debugDraw(camera.getModelViewProjectionMatrix());
 	camera.end();
 	ofPopStyle();
-
-	gui.draw();
+	ship.drawGui();
+	surround.drawGui();
 }
 
 //--------------------------------------------------------------
